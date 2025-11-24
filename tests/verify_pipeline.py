@@ -15,7 +15,7 @@ def verify_pipeline():
     print("Starting pipeline verification...")
     
     # 1. Data Loading
-    data_path = 'SPP/data/student_data.csv'
+    data_path = 'data/student_data.csv'
     loader = DataLoader(data_path)
     df = loader.load_data()
     loader.validate_data(df)
@@ -34,7 +34,7 @@ def verify_pipeline():
     print(f"[PASS] Model trained. Metrics: {metrics}")
     
     # 4. Saving
-    model_path = 'SPP/models/test_model.pkl'
+    model_path = 'models/test_model.pkl'
     trainer.save_model(model_path)
     if os.path.exists(model_path):
         print(f"[PASS] Model saved to {model_path}.")
@@ -49,9 +49,9 @@ def verify_pipeline():
     print(f"[PASS] Prediction successful: {prediction}")
     
     # 6. Visualization
-    visualizer = Visualizer(output_dir='SPP/tests/output')
+    visualizer = Visualizer(output_dir='tests/output')
     visualizer.plot_feature_importance(model, X_train.columns)
-    if os.path.exists('SPP/tests/output/feature_importance.png'):
+    if os.path.exists('tests/output/feature_importance.png'):
         print("[PASS] Feature importance plot created.")
     else:
         print("[FAIL] Feature importance plot not created.")
